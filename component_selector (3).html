@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Sustainability Selector</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #e8f5e9);
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .sidebar {
+    width: 300px;
+    background: #004d40;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+  }
+  .sidebar h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .summary {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  .main {
+    margin-left: 320px;
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 280px;
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: scale(1.03);
+  }
+  .card h3 {
+    margin-top: 0;
+    color: #00796b;
+  }
+  .card p {
+    margin: 5px 0;
+  }
+  .card input {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class='sidebar'>
+  <h2>Team Totals</h2>
+  <div class='summary'>
+    <p><strong>Total Cost:</strong> $<span id='totalCost'>0</span></p>
+    <p><strong>Avg Sustainability:</strong> <span id='avgSustainability'>0</span></p>
+    <p><strong>Avg Comfort:</strong> <span id='avgComfort'>0</span></p>
+    <p><strong>Carbon Impact:</strong> <span id='carbonImpact'>0</span> kg CO₂</p>
+  </div>
+</div>
+<div class='main'>
+
+    <div class='card'>
+      <h3>Whirly Birds</h3>
+      <p><strong>Cost:</strong> $50.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 3.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -50.0 kg CO₂</p>
+      <p><em>Passive ventilation reduces reliance on powered cooling.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='50.0' 
+        data-sustainability='4.0' 
+        data-comfort='3.0' 
+        data-carbon='-50.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Operable Wall Louvres</h3>
+      <p><strong>Cost:</strong> $100.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 5.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -80.0 kg CO₂</p>
+      <p><em>Enhances natural airflow, reducing need for mechanical ventilation.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='100.0' 
+        data-sustainability='4.0' 
+        data-comfort='5.0' 
+        data-carbon='-80.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Solar Panels</h3>
+      <p><strong>Cost:</strong> $250.0</p>
+      <p><strong>Sustainability:</strong> 5.0 / 5</p>
+      <p><strong>Comfort:</strong> 3.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -200.0 kg CO₂</p>
+      <p><em>Offsets grid electricity use with renewable energy.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='250.0' 
+        data-sustainability='5.0' 
+        data-comfort='3.0' 
+        data-carbon='-200.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Roof Insulation</h3>
+      <p><strong>Cost:</strong> $80.0</p>
+      <p><strong>Sustainability:</strong> 3.0 / 5</p>
+      <p><strong>Comfort:</strong> 4.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -60.0 kg CO₂</p>
+      <p><em>Reduces cooling energy demand.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='80.0' 
+        data-sustainability='3.0' 
+        data-comfort='4.0' 
+        data-carbon='-60.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Wall Insulation</h3>
+      <p><strong>Cost:</strong> $60.0</p>
+      <p><strong>Sustainability:</strong> 3.0 / 5</p>
+      <p><strong>Comfort:</strong> 3.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -40.0 kg CO₂</p>
+      <p><em>Improves thermal efficiency, lowering energy use.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='60.0' 
+        data-sustainability='3.0' 
+        data-comfort='3.0' 
+        data-carbon='-40.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Shading/Awnings</h3>
+      <p><strong>Cost:</strong> $120.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 5.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -70.0 kg CO₂</p>
+      <p><em>Lowers indoor temperatures, reducing cooling needs.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='120.0' 
+        data-sustainability='4.0' 
+        data-comfort='5.0' 
+        data-carbon='-70.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Rainwater Tanks</h3>
+      <p><strong>Cost:</strong> $70.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 2.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -30.0 kg CO₂</p>
+      <p><em>Reduces reliance on mains water and pumping systems.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='70.0' 
+        data-sustainability='4.0' 
+        data-comfort='2.0' 
+        data-carbon='-30.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>LED Lighting</h3>
+      <p><strong>Cost:</strong> $40.0</p>
+      <p><strong>Sustainability:</strong> 3.0 / 5</p>
+      <p><strong>Comfort:</strong> 3.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -20.0 kg CO₂</p>
+      <p><em>Uses less electricity than traditional lighting.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='40.0' 
+        data-sustainability='3.0' 
+        data-comfort='3.0' 
+        data-carbon='-20.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Green Wall</h3>
+      <p><strong>Cost:</strong> $100.0</p>
+      <p><strong>Sustainability:</strong> 5.0 / 5</p>
+      <p><strong>Comfort:</strong> 2.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -40.0 kg CO₂</p>
+      <p><em>Provides passive cooling and absorbs CO₂.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='100.0' 
+        data-sustainability='5.0' 
+        data-comfort='2.0' 
+        data-carbon='-40.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>EV Charging Station</h3>
+      <p><strong>Cost:</strong> $200.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 1.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> 50.0 kg CO₂</p>
+      <p><em>Adds grid electricity demand unless paired with solar.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='200.0' 
+        data-sustainability='4.0' 
+        data-comfort='1.0' 
+        data-carbon='50.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Reflective Roofing</h3>
+      <p><strong>Cost:</strong> $100.0</p>
+      <p><strong>Sustainability:</strong> 4.0 / 5</p>
+      <p><strong>Comfort:</strong> 4.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> -60.0 kg CO₂</p>
+      <p><em>Reduces heat absorption, lowering cooling energy.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='100.0' 
+        data-sustainability='4.0' 
+        data-comfort='4.0' 
+        data-carbon='-60.0'> Select
+    </div>
+    
+    <div class='card'>
+      <h3>Ceiling Fans</h3>
+      <p><strong>Cost:</strong> $60.0</p>
+      <p><strong>Sustainability:</strong> 2.0 / 5</p>
+      <p><strong>Comfort:</strong> 4.0 / 5</p>
+      <p><strong>Carbon Impact:</strong> 20.0 kg CO₂</p>
+      <p><em>Uses electricity, but far less than air conditioning.</em></p>
+      <input type='checkbox' class='component' 
+        data-cost='60.0' 
+        data-sustainability='2.0' 
+        data-comfort='4.0' 
+        data-carbon='20.0'> Select
+    </div>
+    
+</div>
+<script>
+  const checkboxes = document.querySelectorAll('.component');
+  checkboxes.forEach(cb => cb.addEventListener('change', updateTotals));
+
+  function updateTotals() {
+    let totalCost = 0;
+    let totalSustainability = 0;
+    let totalComfort = 0;
+    let totalCarbon = 0;
+    let count = 0;
+
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        totalCost += parseFloat(cb.dataset.cost);
+        totalSustainability += parseFloat(cb.dataset.sustainability);
+        totalComfort += parseFloat(cb.dataset.comfort);
+        totalCarbon += parseFloat(cb.dataset.carbon);
+        count++;
+      }
+    });
+
+    document.getElementById('totalCost').textContent = totalCost.toFixed(2);
+    document.getElementById('avgSustainability').textContent = count ? (totalSustainability / count).toFixed(2) : '0';
+    document.getElementById('avgComfort').textContent = count ? (totalComfort / count).toFixed(2) : '0';
+    document.getElementById('carbonImpact').textContent = totalCarbon.toFixed(2);
+  }
+</script>
+</body>
+</html>
