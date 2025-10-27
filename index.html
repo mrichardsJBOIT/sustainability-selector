@@ -70,13 +70,21 @@
     /* Image icon styling */
     .image-icon {
       font-size: 1.2em;
-      margin-left: 0.5em;
       cursor: pointer;
       opacity: 0.7;
       transition: opacity 0.2s;
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      z-index: 10;
     }
     .image-icon:hover {
       opacity: 1;
+    }
+    
+    /* Make card position relative for absolute positioning of icon */
+    .card {
+      position: relative;
     }
     
     /* Modal overlay */
@@ -209,8 +217,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='40.0' data-sustainability='2.0' data-comfort='4.0' data-carbon='20.0'>
-        <h3>Wall Fans <span class='image-icon' onclick='openModal("wall_fans.jpg", "Wall Fans")'>📷</span></h3>
+        <h3>Wall Fans</h3>
       </label>
+      <span class='image-icon' onclick='openModal("wall_fans.jpg", "Wall Fans", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $40.0<br>
         🌱 Sustainability: 2.0<br>
@@ -223,8 +232,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='50.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-30.0'>
-        <h3>Window shading (Tinted glass or blinds) <span class='image-icon' onclick='openModal("window_shading.jpg", "Window Shading")'>📷</span></h3>
+        <h3>Window shading (Tinted glass or blinds)</h3>
       </label>
+      <span class='image-icon' onclick='openModal("window_shading.jpg", "Window Shading", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $50.0<br>
         🌱 Sustainability: 3.0<br>
@@ -237,8 +247,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='80.0' data-sustainability='4.0' data-comfort='3.0' data-carbon='-50.0'>
-        <h3>Solar powered Whirly Birds <span class='image-icon' onclick='openModal("whirly_birds.jpg", "Solar Powered Whirly Birds")'>📷</span></h3>
+        <h3>Solar powered Whirly Birds</h3>
       </label>
+      <span class='image-icon' onclick='openModal("whirly_birds.jpg", "Solar Powered Whirly Birds", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $80.0<br>
         🌱 Sustainability: 4.0<br>
@@ -251,8 +262,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-80.0'>
-        <h3>Operable Wall Louvres <span class='image-icon' onclick='openModal("louvres.jpg", "Operable Wall Louvres")'>📷</span></h3>
+        <h3>Operable Wall Louvres</h3>
       </label>
+      <span class='image-icon' onclick='openModal("louvres.jpg", "Operable Wall Louvres", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $150.0<br>
         🌱 Sustainability: 4.0<br>
@@ -265,8 +277,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='2.0' data-carbon='-30.0'>
-        <h3>Rainwater Tanks <span class='image-icon' onclick='openModal("rainwater_tanks.jpg", "Rainwater Tanks")'>📷</span></h3>
+        <h3>Rainwater Tanks</h3>
       </label>
+      <span class='image-icon' onclick='openModal("rainwater_tanks.jpg", "Rainwater Tanks", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $150.0<br>
         🌱 Sustainability: 4.0<br>
@@ -279,8 +292,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Reflective Roofing <span class='image-icon' onclick='openModal("reflective_roofing.jpg", "Reflective Roofing")'>📷</span></h3>
+        <h3>Reflective Roofing</h3>
       </label>
+      <span class='image-icon' onclick='openModal("reflective_roofing.jpg", "Reflective Roofing", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $150.0<br>
         🌱 Sustainability: 4.0<br>
@@ -293,8 +307,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='180.0' data-sustainability='3.0' data-comfort='2.0' data-carbon='-20.0'>
-        <h3>LED Lighting <span class='image-icon' onclick='openModal("led_lighting.jpg", "LED Lighting")'>📷</span></h3>
+        <h3>LED Lighting</h3>
       </label>
+      <span class='image-icon' onclick='openModal("led_lighting.jpg", "LED Lighting", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $180.0<br>
         🌱 Sustainability: 3.0<br>
@@ -307,8 +322,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='200.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-70.0'>
-        <h3>Shading/Awnings <span class='image-icon' onclick='openModal("awnings.jpg", "Shading/Awnings")'>📷</span></h3>
+        <h3>Shading/Awnings</h3>
       </label>
+      <span class='image-icon' onclick='openModal("awnings.jpg", "Shading/Awnings", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $200.0<br>
         🌱 Sustainability: 4.0<br>
@@ -321,8 +337,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='250.0' data-sustainability='3.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Roof Insulation <span class='image-icon' onclick='openModal("roof_insulation.jpg", "Roof Insulation")'>📷</span></h3>
+        <h3>Roof Insulation</h3>
       </label>
+      <span class='image-icon' onclick='openModal("roof_insulation.jpg", "Roof Insulation", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $250.0<br>
         🌱 Sustainability: 3.0<br>
@@ -335,8 +352,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='300.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-40.0'>
-        <h3>Wall Insulation <span class='image-icon' onclick='openModal("wall_insulation.jpg", "Wall Insulation")'>📷</span></h3>
+        <h3>Wall Insulation</h3>
       </label>
+      <span class='image-icon' onclick='openModal("wall_insulation.jpg", "Wall Insulation", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $300.0<br>
         🌱 Sustainability: 3.0<br>
@@ -349,8 +367,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='350.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-40.0'>
-        <h3>Green Wall <span class='image-icon' onclick='openModal("green_wall.jpg", "Green Wall")'>📷</span></h3>
+        <h3>Green Wall</h3>
       </label>
+      <span class='image-icon' onclick='openModal("green_wall.jpg", "Green Wall", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $350.0<br>
         🌱 Sustainability: 5.0<br>
@@ -363,8 +382,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='400.0' data-sustainability='4.0' data-comfort='1.0' data-carbon='50.0'>
-        <h3>EV Charging Station <span class='image-icon' onclick='openModal("ev_charger.jpg", "EV Charging Station")'>📷</span></h3>
+        <h3>EV Charging Station</h3>
       </label>
+      <span class='image-icon' onclick='openModal("ev_charger.jpg", "EV Charging Station", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $400.0<br>
         🌱 Sustainability: 4.0<br>
@@ -377,8 +397,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='500.0' data-sustainability='5.0' data-comfort='2.0' data-carbon='-200.0'>
-        <h3>Solar Panels <span class='image-icon' onclick='openModal("solar_panels.jpg", "Solar Panels")'>📷</span></h3>
+        <h3>Solar Panels</h3>
       </label>
+      <span class='image-icon' onclick='openModal("solar_panels.jpg", "Solar Panels", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $500.0<br>
         🌱 Sustainability: 5.0<br>
@@ -391,8 +412,9 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='750.0' data-sustainability='5.0' data-comfort='2.0' data-carbon='-250.0'>
-        <h3>Solar panels with battery <span class='image-icon' onclick='openModal("solar_battery.jpg", "Solar Panels with Battery")'>📷</span></h3>
+        <h3>Solar panels with battery</h3>
       </label>
+      <span class='image-icon' onclick='openModal("solar_battery.jpg", "Solar Panels with Battery", event)'>📷</span>
       <div class='scores'>
         💰 Cost: $750.0<br>
         🌱 Sustainability: 5.0<br>
@@ -417,7 +439,13 @@
 
   <script>
     // Modal functionality
-    function openModal(imageFileName, title) {
+    function openModal(imageFileName, title, event) {
+      // Prevent event from bubbling up to the label/checkbox
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      
       const modal = document.getElementById('imageModal');
       const modalImage = document.getElementById('modalImage');
       const modalTitle = document.getElementById('modalTitle');
