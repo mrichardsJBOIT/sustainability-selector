@@ -21,14 +21,22 @@
     }
     .summary {
       background-color: #FFFFFF;
-      padding: 1em;
+      padding: 1.2em 1em;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-around;
+      align-items: center;
       font-size: 1.2em;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    .summary > div {
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
     }
     .container {
       display: flex;
@@ -63,7 +71,7 @@
 <body>
   <header>🌱 Sustainability Selector</header>
   <div class='summary'>
-    <div>💰 Cost: <span id='totalCost'>0</span></div>
+    <div>💰 Cost: <span id='totalCost'>$0</span></div>
     <div>🌱 Sustainability: <span id='avgSustainability'>0</span></div>
     <div>🛋️ Comfort: <span id='avgComfort'>0</span></div>
     <div>🌍 Carbon: <span id='totalCarbon'>0</span></div>
@@ -72,170 +80,198 @@
 
     <div class='card'>
       <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='50.0' data-sustainability='4.0' data-comfort='3.0' data-carbon='-50.0'>
-        <h3>Whirly Birds</h3>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='40.0' data-sustainability='2.0' data-comfort='4.0' data-carbon='20.0'>
+        <h3>Wall Fans</h3>
       </label>
       <div class='scores'>
-        💰 Cost: 50.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 3.0<br>
-        🌍 Carbon Impact: -50.0
-      </div>
-      <div class='explanation'>Passive ventilation reduces reliance on powered cooling.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='100.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-80.0'>
-        <h3>Operable Wall Louvres</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 100.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 5.0<br>
-        🌍 Carbon Impact: -80.0
-      </div>
-      <div class='explanation'>Enhances natural airflow, reducing need for mechanical ventilation.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='250.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-200.0'>
-        <h3>Solar Panels</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 250.0<br>
-        🌱 Sustainability: 5.0<br>
-        🛋️ Comfort: 3.0<br>
-        🌍 Carbon Impact: -200.0
-      </div>
-      <div class='explanation'>Offsets grid electricity use with renewable energy.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='80.0' data-sustainability='3.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Roof Insulation</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 80.0<br>
-        🌱 Sustainability: 3.0<br>
-        🛋️ Comfort: 4.0<br>
-        🌍 Carbon Impact: -60.0
-      </div>
-      <div class='explanation'>Reduces cooling energy demand.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='60.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-40.0'>
-        <h3>Wall Insulation</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 60.0<br>
-        🌱 Sustainability: 3.0<br>
-        🛋️ Comfort: 3.0<br>
-        🌍 Carbon Impact: -40.0
-      </div>
-      <div class='explanation'>Improves thermal efficiency, lowering energy use.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='120.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-70.0'>
-        <h3>Shading/Awnings</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 120.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 5.0<br>
-        🌍 Carbon Impact: -70.0
-      </div>
-      <div class='explanation'>Lowers indoor temperatures, reducing cooling needs.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='70.0' data-sustainability='4.0' data-comfort='2.0' data-carbon='-30.0'>
-        <h3>Rainwater Tanks</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 70.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 2.0<br>
-        🌍 Carbon Impact: -30.0
-      </div>
-      <div class='explanation'>Reduces reliance on mains water and pumping systems.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='40.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-20.0'>
-        <h3>LED Lighting</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 40.0<br>
-        🌱 Sustainability: 3.0<br>
-        🛋️ Comfort: 3.0<br>
-        🌍 Carbon Impact: -20.0
-      </div>
-      <div class='explanation'>Uses less electricity than traditional lighting.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='100.0' data-sustainability='5.0' data-comfort='2.0' data-carbon='-40.0'>
-        <h3>Green Wall</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 100.0<br>
-        🌱 Sustainability: 5.0<br>
-        🛋️ Comfort: 2.0<br>
-        🌍 Carbon Impact: -40.0
-      </div>
-      <div class='explanation'>Provides passive cooling and absorbs CO₂.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='200.0' data-sustainability='4.0' data-comfort='1.0' data-carbon='50.0'>
-        <h3>EV Charging Station</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 200.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 1.0<br>
-        🌍 Carbon Impact: 50.0
-      </div>
-      <div class='explanation'>Adds grid electricity demand unless paired with solar.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='100.0' data-sustainability='4.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Reflective Roofing</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 100.0<br>
-        🌱 Sustainability: 4.0<br>
-        🛋️ Comfort: 4.0<br>
-        🌍 Carbon Impact: -60.0
-      </div>
-      <div class='explanation'>Reduces heat absorption, lowering cooling energy.</div>
-    </div>
-    
-    <div class='card'>
-      <label>
-        <input type='checkbox' onchange='updateTotals(this)' data-cost='60.0' data-sustainability='2.0' data-comfort='4.0' data-carbon='20.0'>
-        <h3>Ceiling Fans</h3>
-      </label>
-      <div class='scores'>
-        💰 Cost: 60.0<br>
+        💰 Cost: $40.0<br>
         🌱 Sustainability: 2.0<br>
         🛋️ Comfort: 4.0<br>
         🌍 Carbon Impact: 20.0
       </div>
-      <div class='explanation'>Uses electricity, but far less than air conditioning.</div>
+      <div class='explanation'>Covers multiple wall-mounted fans for workshop air circulation.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='50.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-30.0'>
+        <h3>Window shading (Tinted glass or blinds)</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $50.0<br>
+        🌱 Sustainability: 3.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -30.0
+      </div>
+      <div class='explanation'>Includes tinted glass or blinds for key windows to reduce heat.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='80.0' data-sustainability='4.0' data-comfort='3.0' data-carbon='-50.0'>
+        <h3>Solar powered Whirly Birds</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $80.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -50.0
+      </div>
+      <div class='explanation'>Full set of roof-mounted ventilators powered by solar energy.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-80.0'>
+        <h3>Operable Wall Louvres</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $150.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 5.0<br>
+        🌍 Carbon Impact: -80.0
+      </div>
+      <div class='explanation'>Includes several louvres for effective cross-ventilation.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='2.0' data-carbon='-30.0'>
+        <h3>Rainwater Tanks</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $150.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 2.0<br>
+        🌍 Carbon Impact: -30.0
+      </div>
+      <div class='explanation'>Covers gutters, tanks, and basic filtration for water reuse.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='4.0' data-carbon='-60.0'>
+        <h3>Reflective Roofing</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $150.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 4.0<br>
+        🌍 Carbon Impact: -60.0
+      </div>
+      <div class='explanation'>Reflective coating or material for the entire roof area.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='180.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-20.0'>
+        <h3>LED Lighting</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $180.0<br>
+        🌱 Sustainability: 3.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -20.0
+      </div>
+      <div class='explanation'>Complete upgrade to energy-efficient LED lighting.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='200.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-70.0'>
+        <h3>Shading/Awnings</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $200.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 5.0<br>
+        🌍 Carbon Impact: -70.0
+      </div>
+      <div class='explanation'>External shading structures for sun-exposed areas.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='250.0' data-sustainability='3.0' data-comfort='4.0' data-carbon='-60.0'>
+        <h3>Roof Insulation</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $250.0<br>
+        🌱 Sustainability: 3.0<br>
+        🛋️ Comfort: 4.0<br>
+        🌍 Carbon Impact: -60.0
+      </div>
+      <div class='explanation'>Insulation for the entire roof to improve thermal performance.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='300.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-40.0'>
+        <h3>Wall Insulation</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $300.0<br>
+        🌱 Sustainability: 3.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -40.0
+      </div>
+      <div class='explanation'>Insulation for all external walls to reduce heat transfer.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='350.0' data-sustainability='5.0' data-comfort='2.0' data-carbon='-40.0'>
+        <h3>Green Wall</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $350.0<br>
+        🌱 Sustainability: 5.0<br>
+        🛋️ Comfort: 2.0<br>
+        🌍 Carbon Impact: -40.0
+      </div>
+      <div class='explanation'>Exterior vertical garden system with irrigation for one wall.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='400.0' data-sustainability='4.0' data-comfort='1.0' data-carbon='50.0'>
+        <h3>EV Charging Station</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $400.0<br>
+        🌱 Sustainability: 4.0<br>
+        🛋️ Comfort: 1.0<br>
+        🌍 Carbon Impact: 50.0
+      </div>
+      <div class='explanation'>Installation of one commercial-grade EV charger.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='500.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-200.0'>
+        <h3>Solar Panels</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $500.0<br>
+        🌱 Sustainability: 5.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -200.0
+      </div>
+      <div class='explanation'>Complete rooftop solar array for workshop energy needs.</div>
+    </div>
+    
+    <div class='card'>
+      <label>
+        <input type='checkbox' onchange='updateTotals(this)' data-cost='750.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-250.0'>
+        <h3>Solar panels with battery</h3>
+      </label>
+      <div class='scores'>
+        💰 Cost: $750.0<br>
+        🌱 Sustainability: 5.0<br>
+        🛋️ Comfort: 3.0<br>
+        🌍 Carbon Impact: -250.0
+      </div>
+      <div class='explanation'>Solar array plus battery storage for energy resilience.</div>
     </div>
     
   </div>
@@ -252,7 +288,7 @@
           count++;
         }
       });
-      document.getElementById('totalCost').textContent = totalCost.toFixed(0);
+      document.getElementById('totalCost').textContent = '$' + totalCost.toFixed(0);
       document.getElementById('avgSustainability').textContent = count ? (totalSustainability / count).toFixed(1) : '0';
       document.getElementById('avgComfort').textContent = count ? (totalComfort / count).toFixed(1) : '0';
       document.getElementById('totalCarbon').textContent = totalCarbon.toFixed(0);
