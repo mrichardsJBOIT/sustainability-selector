@@ -66,6 +66,134 @@
       font-size: 0.9em;
       color: #555;
     }
+    
+    /* Image icon styling */
+    .image-icon {
+      font-size: 1.2em;
+      margin-left: 0.5em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .image-icon:hover {
+      opacity: 1;
+    }
+    
+    /* Modal overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-overlay.show {
+      display: flex;
+      opacity: 1;
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+    }
+    
+    /* Modal content */
+    .modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+    
+    .modal-overlay.show .modal-content {
+      transform: scale(1);
+    }
+    
+    /* Modal image */
+    .modal-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: 600px;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+    
+    /* Modal header */
+    .modal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+      color: white;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 0;
+    }
+    
+    /* Close button */
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2em;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+    }
+    
+    .modal-close:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+      }
+      
+      .modal-image {
+        max-height: 60vh;
+      }
+      
+      .modal-header {
+        padding: 0.5em;
+      }
+      
+      .modal-title {
+        font-size: 1em;
+      }
+      
+      .modal-close {
+        font-size: 1.5em;
+        width: 35px;
+        height: 35px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -81,7 +209,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='40.0' data-sustainability='2.0' data-comfort='4.0' data-carbon='20.0'>
-        <h3>Wall Fans</h3>
+        <h3>Wall Fans <span class='image-icon' onclick='openModal("wall_fans.jpg", "Wall Fans")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $40.0<br>
@@ -95,7 +223,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='50.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-30.0'>
-        <h3>Window shading (Tinted glass or blinds)</h3>
+        <h3>Window shading (Tinted glass or blinds) <span class='image-icon' onclick='openModal("window_shading.jpg", "Window Shading")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $50.0<br>
@@ -109,7 +237,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='80.0' data-sustainability='4.0' data-comfort='3.0' data-carbon='-50.0'>
-        <h3>Solar powered Whirly Birds</h3>
+        <h3>Solar powered Whirly Birds <span class='image-icon' onclick='openModal("whirly_birds.jpg", "Solar Powered Whirly Birds")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $80.0<br>
@@ -123,7 +251,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-80.0'>
-        <h3>Operable Wall Louvres</h3>
+        <h3>Operable Wall Louvres <span class='image-icon' onclick='openModal("louvres.jpg", "Operable Wall Louvres")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $150.0<br>
@@ -137,7 +265,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='2.0' data-carbon='-30.0'>
-        <h3>Rainwater Tanks</h3>
+        <h3>Rainwater Tanks <span class='image-icon' onclick='openModal("rainwater_tanks.jpg", "Rainwater Tanks")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $150.0<br>
@@ -151,7 +279,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='150.0' data-sustainability='4.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Reflective Roofing</h3>
+        <h3>Reflective Roofing <span class='image-icon' onclick='openModal("reflective_roofing.jpg", "Reflective Roofing")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $150.0<br>
@@ -165,7 +293,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='180.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-20.0'>
-        <h3>LED Lighting</h3>
+        <h3>LED Lighting <span class='image-icon' onclick='openModal("led_lighting.jpg", "LED Lighting")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $180.0<br>
@@ -179,7 +307,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='200.0' data-sustainability='4.0' data-comfort='5.0' data-carbon='-70.0'>
-        <h3>Shading/Awnings</h3>
+        <h3>Shading/Awnings <span class='image-icon' onclick='openModal("awnings.jpg", "Shading/Awnings")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $200.0<br>
@@ -193,7 +321,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='250.0' data-sustainability='3.0' data-comfort='4.0' data-carbon='-60.0'>
-        <h3>Roof Insulation</h3>
+        <h3>Roof Insulation <span class='image-icon' onclick='openModal("roof_insulation.jpg", "Roof Insulation")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $250.0<br>
@@ -207,7 +335,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='300.0' data-sustainability='3.0' data-comfort='3.0' data-carbon='-40.0'>
-        <h3>Wall Insulation</h3>
+        <h3>Wall Insulation <span class='image-icon' onclick='openModal("wall_insulation.jpg", "Wall Insulation")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $300.0<br>
@@ -221,7 +349,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='350.0' data-sustainability='5.0' data-comfort='2.0' data-carbon='-40.0'>
-        <h3>Green Wall</h3>
+        <h3>Green Wall <span class='image-icon' onclick='openModal("green_wall.jpg", "Green Wall")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $350.0<br>
@@ -235,7 +363,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='400.0' data-sustainability='4.0' data-comfort='1.0' data-carbon='50.0'>
-        <h3>EV Charging Station</h3>
+        <h3>EV Charging Station <span class='image-icon' onclick='openModal("ev_charger.jpg", "EV Charging Station")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $400.0<br>
@@ -249,7 +377,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='500.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-200.0'>
-        <h3>Solar Panels</h3>
+        <h3>Solar Panels <span class='image-icon' onclick='openModal("solar_panels.jpg", "Solar Panels")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $500.0<br>
@@ -263,7 +391,7 @@
     <div class='card'>
       <label>
         <input type='checkbox' onchange='updateTotals(this)' data-cost='750.0' data-sustainability='5.0' data-comfort='3.0' data-carbon='-250.0'>
-        <h3>Solar panels with battery</h3>
+        <h3>Solar panels with battery <span class='image-icon' onclick='openModal("solar_battery.jpg", "Solar Panels with Battery")'>📷</span></h3>
       </label>
       <div class='scores'>
         💰 Cost: $750.0<br>
@@ -275,7 +403,68 @@
     </div>
     
   </div>
+
+  <!-- Modal overlay -->
+  <div id="imageModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <img id="modalImage" class="modal-image" src="" alt="">
+    </div>
+  </div>
+
   <script>
+    // Modal functionality
+    function openModal(imageFileName, title) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      
+      modalImage.src = 'images/' + imageFileName;
+      modalImage.alt = title;
+      modalTitle.textContent = title;
+      
+      modal.style.display = 'flex';
+      // Trigger animation after display is set
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+      
+      // Prevent body scrolling when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(event) {
+      const modal = document.getElementById('imageModal');
+      
+      // Only close if clicking on overlay (not modal content) or close button
+      if (event && event.target !== modal && event.target.className !== 'modal-close') {
+        return;
+      }
+      
+      modal.classList.remove('show');
+      
+      // Hide modal after animation completes
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Prevent modal content clicks from closing modal
+    document.querySelector('.modal-content').addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+
     function updateTotals() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       let totalCost = 0, totalSustainability = 0, totalComfort = 0, totalCarbon = 0, count = 0;
